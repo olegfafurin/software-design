@@ -16,7 +16,7 @@ class CalcVisitor : TokenVisitor {
         try {
             val arg1 = acc.pop()
             val arg2 = acc.pop()
-            acc.addLast(token.op(arg2, arg1))
+            acc.push(token.op(arg2, arg1))
         } catch (e: NoSuchElementException) {
             throw IllegalArgumentException("Invalid reverse polish notation: operation is present but there are not enough arguments given")
         }

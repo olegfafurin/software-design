@@ -11,37 +11,37 @@ class ParserVisitor : TokenVisitor {
 
     override fun visit(token: Brace) {
         when (token) {
-            is LeftBrace -> ops.addLast(token)
+            is LeftBrace -> ops.push(token)
             is RightBrace -> {
-                while (ops.isNotEmpty() and (ops.peekLast() !is LeftBrace)) {
-                    polishExpr.add(ops.pollLast())
+                while (ops.isNotEmpty() and (ops.peek() !is LeftBrace)) {
+                    polishExpr.add(ops.pop())
                 }
                 if (ops.isEmpty())
                     throw IllegalStateException("Unbalanced parentheses found")
-                ops.pollLast()
+                ops.pop()
             }
         }
     }
 
     override fun visit(token: Operation) {
         while (ops.isNotEmpty()) {
-            val op = ops.peekLast()
+            val op = ops.peek()
             if (op is Operation) {
                 if (op.priority >= token.priority) {
-                    polishExpr.add(ops.pollLast())
+                    polishExpr.add(ops.pop())
                     continue
                 }
             }
             break
         }
-        ops.addLast(token)
+        ops.push(token)
     }
 
     fun visit(tokens: List<Token>): List<Token> {
         for (elem in tokens)
             elem.accept(this)
         while (ops.isNotEmpty()) {
-            val op = ops.pollLast()
+            val op = ops.pop()
             if (op !is Operation)
                 throw IllegalStateException("Unbalanced operations/operands")
             polishExpr.add(op)
