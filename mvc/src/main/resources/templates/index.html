@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<!--suppress HtmlFormInputWithoutLabel -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+    <title>My tasks</title>
+</head>
+<body>
+<h1>Add new list</h1>
+<!--/*@thymesVar id="listToAdd" type="org.imd.sd.mvc.model.TaskList"*/-->
+<form method="POST" action="/add-tasklist">
+    <table>
+        <tr>
+            <td><label>Name:</label></td>
+            <td><input type="text" th:name="newTaskListName"/></td>
+            <td>
+                <input type="submit" value="Add list"> </td>
+        </tr>
+    </table>
+</form>
+
+<hr>
+<div th:each="tasklist : ${lists}">
+<!--    /*@thymesVar id="tasklist" type="org.imd.sd.mvc.model.TaskList"*/-->
+    <h2 th:text="${tasklist.name}"></h2>
+    <table>
+        <!--/*@thymesVar id="theTask" type="org.imd.sd.mvc.model.Task"*/-->
+        <tr th:each="theTask : ${tasklist.data}">
+            <td th:text="${theTask.title}"></td>
+            <td>
+                <form method="post" action="/delete-task">
+                    <input type="hidden" th:name="deleteTaskName" th:value="${theTask.title}"/>
+                    <input type="hidden" th:name="deleteTaskListName" th:value="${tasklist.name}"/>
+                    <button type="submit" class="delete">Delete task</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form method="post" action="/add-task">
+                    <input type="hidden" th:name="addTaskListName" th:value="${tasklist.name}"/>
+                    <input type="text" th:name="addTaskName"/>
+                    <button type="submit" class="delete">Add task</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <form method="post" action="delete-tasklist">
+        <input type="hidden" th:name="deleteTaskListName" th:value="${tasklist.name}">
+        <input type="submit" value="Delete list">
+    </form>
+</div>
+
+</body>
+</html>
