@@ -1,3 +1,5 @@
+package org.imd.sd.mock.search
+
 /**
  * created by imd on 20.12.2020
  */

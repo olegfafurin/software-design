@@ -1,8 +1,12 @@
+package org.imd.sd.mock.search
+
+import org.imd.sd.mock.http.UrlReader
+
 /**
  * created by imd on 20.12.2020
  */
 
-class SearchClient(
+open class SearchClient(
     val host: String,
     val urlReader: UrlReader = UrlReader(),
     val parser: ResponseParser = ResponseParser()
