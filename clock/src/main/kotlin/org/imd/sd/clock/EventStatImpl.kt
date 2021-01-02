@@ -13,7 +13,7 @@ class EventStatImpl(val clock: Clock) : EventStat {
 
     private val data: MutableMap<String, Deque<Instant>> = mutableMapOf()
     val SECONDS_IN_HOUR = 60 * 60L
-    val SECONDS_IN_MINUTE = 60L
+//    val SECONDS_IN_MINUTE = 60L
 
     private fun updateStat(now: Instant) {
         val timeThreshold = now.minusSeconds(SECONDS_IN_HOUR)

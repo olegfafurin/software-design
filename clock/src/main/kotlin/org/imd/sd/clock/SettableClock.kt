@@ -6,7 +6,7 @@ import java.time.Instant
  * created by imd on 27.12.2020
  */
 
-class SetableClock(var now: Instant) : Clock {
+class SettableClock(var now: Instant) : Clock {
 
     override fun now(): Instant {
         return now
