@@ -23,7 +23,7 @@ public class GetProductsTest extends TestBase {
         Product theOnlyProduct = new Product("mouse", 100);
         databaseManager.addProduct(theOnlyProduct);
         servlet.doGet(request, response);
-        Assert.assertEquals(writer.toString(), expected(Collections.singletonList(theOnlyProduct)));
+        Assert.assertEquals(expected(Collections.singletonList(theOnlyProduct)), writer.toString());
     }
 
 
@@ -38,6 +38,6 @@ public class GetProductsTest extends TestBase {
             databaseManager.addProduct(product);
         }
         servlet.doGet(request, response);
-        Assert.assertEquals(writer.toString(), expected(products));
+        Assert.assertEquals(expected(products), writer.toString());
     }
 }
