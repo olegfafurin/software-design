@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 import static org.mockito.Mockito.when;
+import static ru.akirakozov.sd.refactoring.Main.DB_NAME;
 
 /**
  * created by imd on 26.01.2021
@@ -27,7 +28,7 @@ public class TestBase {
     @Mock
     protected HttpServletResponse response;
 
-    protected final DatabaseManager databaseManager = new DatabaseManager(System.getenv("SD_REFACTORING_DB_NAME"));
+    protected final DatabaseManager databaseManager = new DatabaseManager(DB_NAME);
     protected final StringWriter writer = new StringWriter();
 
     @Before

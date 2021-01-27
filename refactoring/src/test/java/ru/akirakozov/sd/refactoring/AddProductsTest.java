@@ -5,10 +5,6 @@ import org.junit.Test;
 import ru.akirakozov.sd.refactoring.servlet.AddProductServlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 import static org.mockito.Mockito.when;
 

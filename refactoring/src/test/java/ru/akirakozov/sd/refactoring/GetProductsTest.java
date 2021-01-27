@@ -7,7 +7,6 @@ import ru.akirakozov.sd.refactoring.servlet.GetProductsServlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 /**

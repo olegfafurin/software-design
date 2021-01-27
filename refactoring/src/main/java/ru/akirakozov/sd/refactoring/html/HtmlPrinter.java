@@ -1,4 +1,4 @@
-package ru.akirakozov.sd.refactoring.servlet;
+package ru.akirakozov.sd.refactoring.html;
 
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -32,4 +32,7 @@ public class HtmlPrinter {
         printWriter.println("</body></html>");
     }
 
+    public static String toHeader(String s) {
+        return "<h1>" + s + "</h1>";
+    }
 }
